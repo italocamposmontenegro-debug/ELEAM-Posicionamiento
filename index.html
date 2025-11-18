@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guía de Manejo Seguro de Personas Mayores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #1b7d4f;  /* verde principal */
+      --primary-dark: #14573a;
+      --gray-light: #f4f4f4;
+      --gray-medium: #d1d5db;
+      --dark: #111827;
+      --text: #374151;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      border-bottom: 1px solid var(--gray-medium);
+      backdrop-filter: blur(10px);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      color: var(--dark);
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--gray-light), #ffffff);
+      border-bottom: 1px solid var(--gray-medium);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2rem;
+      padding: 2.75rem 0 2.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--primary-dark);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #4b5563;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--gray-medium);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-secondary-ghost {
+      border-radius: 999px;
+      padding: 0.6rem 1.1rem;
+      font-size: 0.85rem;
+      border: 1px solid var(--gray-medium);
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .hero-highlight {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 0.4rem;
+    }
+
+    .hero-card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border: 1px solid var(--gray-medium);
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--dark);
+    }
+
+    .hero-card-body {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-list {
+      font-size: 0.8rem;
+      color: #4b5563;
+      list-style: none;
+      display: grid;
+      gap: 0.35rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-card-list li::before {
+      content: "•";
+      margin-right: 0.4rem;
+      color: var(--primary-dark);
+    }
+
+    .hero-card-footer {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    main {
+      padding: 2.5rem 0 3rem;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.2rem;
+    }
+
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary-dark);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .card {
+      background: var(--gray-light);
+      border-radius: 0.9rem;
+      padding: 1.2rem 1.3rem;
+      border: 1px solid var(--gray-medium);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card ul {
+      margin-left: 1.1rem;
+      font-size: 0.9rem;
+    }
+
+    .card ul li {
+      margin-bottom: 0.25rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .pill {
+      background: #e5f4ec;
+      color: #14573a;
+      border-radius: 999px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .list-tight {
+      font-size: 0.9rem;
+      margin-left: 1.1rem;
+    }
+
+    .list-tight li {
+      margin-bottom: 0.2rem;
+    }
+
+    .highlight-box {
+      border-left: 3px solid var(--primary);
+      padding-left: 0.75rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .video-card {
+      border-radius: 0.9rem;
+      padding: 1rem 1rem 1.1rem;
+      border: 1px solid var(--gray-medium);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 150px;
+    }
+
+    .video-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .video-desc {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 0.7rem;
+    }
+
+    .video-link a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+    }
+
+    .footer {
+      border-top: 1px solid var(--gray-medium);
+      padding: 1.4rem 0 1.6rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      background: #f9fafb;
+      margin-top: 1.5rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .two-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-3,
+      .videos-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="logo-wrap">
+          <!-- Reemplaza 'logo-universidad.png' por la ruta real del logotipo -->
+          <img src="logo-universidad.png" alt="Logotipo de la Universidad" style="height: 40px; width: auto;" />
+          <div class="logo-text">
+            <span>Escuela de Kinesiología</span>
+            <span>Guía de Manejo Seguro de Personas Mayores</span>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#introduccion">Inicio</a>
+          <a href="#objetivos">Objetivos</a>
+          <a href="#conceptos">Conceptos</a>
+          <a href="#movimientos">Movimientos</a>
+          <a href="#videos">Videos</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="introduccion">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <div class="hero-kicker">Cuidadores &amp; Personas Mayores</div>
+          <h1 class="hero-title">
+            Guía práctica para el manejo seguro de personas mayores con alta dependencia
+          </h1>
+          <p class="hero-subtitle">
+            Herramienta formativa diseñada para cuidadoras y cuidadores que acompañan a personas mayores institucionalizadas.
+            Lenguaje sencillo, técnicas claras y apoyo visual con videos demostrativos.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">Prevención de caídas</span>
+            <span class="badge">Protección del cuidador</span>
+            <span class="badge">Posturas seguras</span>
+          </div>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="alert('Aquí puedes vincular la descarga de un PDF cuando lo tengas disponible.')">
+              Descargar guía en PDF
+            </button>
+            <button class="btn-secondary-ghost" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'})">
+              Ver videos demostrativos
+            </button>
+          </div>
+          <div class="hero-highlight">
+            <span>✔ Diseñada para personas sin formación técnica.</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h2 class="hero-card-title">¿Qué aprenderás con esta guía?</h2>
+          <p class="hero-card-body">
+            A mover de forma segura a una persona mayor en la cama, al borde de la cama, hacia la silla de ruedas
+            y a la posición de pie, cuidando también tu propia salud física como cuidador.
+          </p>
+          <ul class="hero-card-list">
+            <li>Cómo cambiar de posición sin dañar la piel.</li>
+            <li>Cómo apoyar la marcha y el equilibrio.</li>
+            <li>Cómo mantener posturas seguras en silla de ruedas.</li>
+          </ul>
+          <div class="hero-card-footer">
+            Incluye una selección de videos prácticos para reforzar cada técnica.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <section id="objetivos">
+        <div class="section-header">
+          <div class="section-kicker">Objetivos de la guía</div>
+          <h2 class="section-title">Qué busca esta herramienta formativa</h2>
+          <p class="section-subtitle">
+            La guía está pensada para entregar estructura, seguridad y confianza a quienes cuidan personas mayores
+            con dependencia moderada a severa.
+          </p>
+        </div>
+        <div class="two-column">
+          <div>
+            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: var(--dark);">Objetivo general</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 0.8rem;">
+              Enseñar a cuidadoras y cuidadores a mover con seguridad a personas mayores que necesitan apoyo moderado o total,
+              protegiendo tanto al adulto mayor como a quien cuida.
+            </p>
+            <div class="highlight-box">
+              Esta guía puede utilizarse en hogares, instituciones y contextos formativos, como apoyo práctico a la enseñanza
+              del manejo manual seguro de personas mayores.
+            </div>
+          </div>
+          <div class="card">
+            <h3>Objetivos específicos</h3>
+            <ul>
+              <li>Enseñar cómo mover a la persona cuando está acostada.</li>
+              <li>Ayudar a pasar de acostada a sentada al borde de la cama.</li>
+              <li>Trasladar de la cama a la silla de ruedas de forma segura.</li>
+              <li>Apoyar para pasar de sentada a la posición de pie.</li>
+              <li>Mantener una buena postura en silla de ruedas.</li>
+              <li>Comprender cómo estas técnicas ayudan a prevenir caídas y lesiones.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="conceptos">
+        <div class="section-header">
+          <div class="section-kicker">Conceptos básicos</div>
+          <h2 class="section-title">Entendiendo el cuerpo de la persona mayor y el rol del cuidador</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Cambios normales del envejecimiento</h3>
+            <p>Con la edad, es normal que aparezcan algunos cambios físicos:</p>
+            <ul>
+              <li>Menos fuerza muscular (sobre todo en las piernas).</li>
+              <li>Más rigidez en las articulaciones.</li>
+              <li>Menor equilibrio y reflejos más lentos.</li>
+              <li>Huesos más frágiles, con mayor riesgo de fracturas.</li>
+              <li>Dificultades en la visión y percepción de la posición del cuerpo.</li>
+            </ul>
+            <div class="pill-list">
+              <span class="pill">Movimiento suave</span>
+              <span class="pill">Respeto al ritmo</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Seguridad para la persona mayor</h3>
+            <p>Para que los movimientos sean seguros:</p>
+            <ul>
+              <li>Mantener el cuerpo lo más alineado posible al moverlo.</li>
+              <li>Evitar arrastrar la piel directamente sobre la superficie.</li>
+              <li>Guiar los movimientos desde hombros, tronco y cadera.</li>
+              <li>Explicar cada paso con palabras simples.</li>
+              <li>Observar cuánta ayuda puede entregar la persona (colabora, necesita asistencia total, etc.).</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Seguridad para quien cuida</h3>
+            <p>El cuidador también debe cuidarse a sí mismo:</p>
+            <ul>
+              <li>Abrir bien los pies para tener una base firme.</li>
+              <li>Mantener la espalda recta y rodillas levemente dobladas.</li>
+              <li>Acercarse a la persona, sin inclinarse desde lejos.</li>
+              <li>Usar la fuerza de las piernas, no de la espalda.</li>
+              <li>Utilizar ayudas técnicas (cinturón de marcha, cojines, etc.) cuando sea necesario.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="movimientos">
+        <div class="section-header">
+          <div class="section-kicker">Movimientos clave</div>
+          <h2 class="section-title">Desde la cama hasta la marcha segura</h2>
+          <p class="section-subtitle">
+            Los siguientes pasos organizan el proceso de movilización en etapas simples, que puedes practicar y reforzar con los videos.
+          </p>
+        </div>
+
+        <div class="two-column" style="margin-bottom: 2rem;">
+          <div class="card">
+            <h3>Movimientos en la cama</h3>
+            <p><strong>¿Para qué sirven?</strong></p>
+            <ul class="list-tight">
+              <li>Evitar heridas por presión.</li>
+              <li>Facilitar el aseo y comodidad.</li>
+              <li>Preparar la postura para sentarse.</li>
+            </ul>
+            <p style="margin-top: 0.6rem;"><strong>Técnicas básicas:</strong></p>
+            <p style="font-size: 0.9rem; margin-top: 0.2rem;"><em>Giro lateral</em></p>
+            <ul class="list-tight">
+              <li>Flexionar la pierna contraria al lado hacia donde girará.</li>
+              <li>Cruzar el brazo sobre el pecho.</li>
+              <li>Guiar el giro desde hombro y cadera con suavidad.</li>
+            </ul>
+            <p style="font-size: 0.9rem; margin-top: 0.4rem;"><em>Desplazamiento hacia la cabecera</em></p>
+            <ul class="list-tight">
+              <li>Elevar suavemente la cadera.</li>
+              <li>Mover primero la cadera y luego los hombros.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>De acostado a sentado al borde de la cama</h3>
+            <p><strong>Objetivos:</strong></p>
+            <ul class="list-tight">
+              <li>Cambiar de postura con seguridad.</li>
+              <li>Activar la musculatura del tronco.</li>
+              <li>Evitar mareos o caídas.</li>
+            </ul>
+            <p style="margin-top: 0.6rem;"><strong>Paso a paso:</strong></p>
+            <ul class="list-tight">
+              <li>Ayudar a la persona a girar en bloque hasta ubicarse de lado.</li>
+              <li>Guiar las piernas fuera de la cama y dejarlas colgando.</li>
+              <li>Incorporar el tronco hasta posición sentada, pidiendo ayuda de los brazos si es posible.</li>
+              <li>Observar si presenta mareos, sudor frío o palidez.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="two-column">
+          <div class="card">
+            <h3>De la cama a la silla de ruedas</h3>
+            <p><strong>Antes de comenzar:</strong></p>
+            <ul class="list-tight">
+              <li>Frenar siempre la silla de ruedas.</li>
+              <li>Ubicarla a un ángulo de 30–45° respecto a la cama.</li>
+              <li>Retirar reposapiés y reposabrazos si el modelo lo permite.</li>
+            </ul>
+            <p style="margin-top: 0.6rem;"><strong>Técnica básica:</strong></p>
+            <ul class="list-tight">
+              <li>Pedir a la persona que se incline levemente hacia adelante.</li>
+              <li>Sujetar desde la cadera o cinturón de marcha.</li>
+              <li>Realizar un giro corto (pivotar) hacia la silla, evitando torcer el tronco.</li>
+              <li>Acomodar bien la cadera y el tronco en el asiento.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>De sentado a ponerse de pie &amp; postura en silla</h3>
+            <p><strong>De sentado a bípedo:</strong></p>
+            <ul class="list-tight">
+              <li>Verificar que ambos pies estén apoyados al mismo nivel.</li>
+              <li>Indicar: “Inclínese hacia adelante y empuje con sus piernas”.</li>
+              <li>Acompañar el movimiento desde la cadera y el tronco, sin tirar de los brazos.</li>
+              <li>Afirmar durante los primeros segundos de pie para estabilizar.</li>
+            </ul>
+            <p style="margin-top: 0.6rem;"><strong>Buena postura en silla de ruedas:</strong></p>
+            <ul class="list-tight">
+              <li>Cadera alineada, sin deslizarse hacia adelante.</li>
+              <li>Muslos y pies apoyados simétricamente.</li>
+              <li>Espalda recta y cabeza alineada.</li>
+              <li>Cambiar de postura cada 2 horas.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="videos">
+        <div class="section-header">
+          <div class="section-kicker">Apoyo audiovisual</div>
+          <h2 class="section-title">Videos demostrativos de movilización segura</h2>
+          <p class="section-subtitle">
+            Estos videos refuerzan las técnicas descritas en la guía. Están pensados para ser revisados por cuidadoras, cuidadores y estudiantes
+            en contextos formativos.
+          </p>
+        </div>
+
+        <div class="videos-grid">
+          <div class="video-card">
+            <div>
+              <div class="video-title">Asistencia de marcha</div>
+              <p class="video-desc">
+                Demostración de cómo acompañar la caminata de una persona mayor, manteniendo seguridad y buena postura.
+              </p>
+            </div>
+            <div class="video-link">
+              <a href="https://drive.google.com/drive/folders/121thHBWBwHV6SxD-PPCM2h1YhIO9ldxP" target="_blank" rel="noopener noreferrer">
+                Ver carpeta de video →
+              </a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div>
+              <div class="video-title">Gran asistencia: acostado a sentado</div>
+              <p class="video-desc">
+                Ejemplo de traspaso para personas que requieren mucha ayuda para pasar de estar acostadas a sentarse en la cama.
+              </p>
+            </div>
+            <div class="video-link">
+              <a href="https://drive.google.com/drive/folders/121thHBWBwHV6SxD-PPCM2h1YhIO9ldxP" target="_blank" rel="noopener noreferrer">
+                Ver carpeta de video →
+              </a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div>
+              <div class="video-title">Gran asistencia: sentado a bípedo</div>
+              <p class="video-desc">
+                Técnica para apoyar a una persona que necesita máxima ayuda al ponerse de pie desde la posición sentada.
+              </p>
+            </div>
+            <div class="video-link">
+              <a href="https://drive.google.com/drive/folders/121thHBWBwHV6SxD-PPCM2h1YhIO9ldxP" target="_blank" rel="noopener noreferrer">
+                Ver carpeta de video →
+              </a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div>
+              <div class="video-title">Asistencia de marcha desde las manos</div>
+              <p class="video-desc">
+                Guía para asistir la marcha tomando las manos de la persona mayor, manteniendo control y seguridad.
+              </p>
+            </div>
+            <div class="video-link">
+              <a href="https://drive.google.com/drive/folders/121thHBWBwHV6SxD-PPCM2h1YhIO9ldxP" target="_blank" rel="noopener noreferrer">
+                Ver carpeta de video →
+              </a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div>
+              <div class="video-title">Asistencia moderada: acostado a sentado</div>
+              <p class="video-desc">
+                Demostración para personas que pueden colaborar en parte, pero aún requieren apoyo para llegar a la posición sentada.
+              </p>
+            </div>
+            <div class="video-link">
+              <a href="https://drive.google.com/drive/folders/121thHBWBwHV6SxD-PPCM2h1YhIO9ldxP" target="_blank" rel="noopener noreferrer">
+                Ver carpeta de video →
+              </a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div>
+              <div class="video-title">Asistencia: de sentado a acostado</div>
+              <p class="video-desc">
+                Ejemplo de cómo acompañar de forma segura el regreso desde la posición sentada en cama a la posición acostada.
+              </p>
+            </div>
+            <div class="video-link">
+              <a href="https://drive.google.com/drive/folders/121thHBWBwHV6SxD-PPCM2h1YhIO9ldxP" target="_blank" rel="noopener noreferrer">
+                Ver carpeta de video →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <div class="section-kicker">Prevención de caídas &amp; autocuidado</div>
+          <h2 class="section-title">Por qué estas técnicas marcan la diferencia</h2>
+        </div>
+        <div class="two-column">
+          <div class="card">
+            <h3>Beneficios para la persona mayor</h3>
+            <ul class="list-tight">
+              <li>Mantener el cuerpo alineado reduce torsiones y esfuerzos innecesarios.</li>
+              <li>Disminuye el riesgo de pérdida de equilibrio durante las transferencias.</li>
+              <li>Protege huesos frágiles y articulaciones sensibles.</li>
+              <li>Favorece una mínima actividad física que ayuda a conservar independencia.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Beneficios para el cuidador</h3>
+            <ul class="list-tight">
+              <li>Menos riesgo de dolor lumbar y otras lesiones musculares.</li>
+              <li>Mayor confianza al realizar movilizaciones complejas.</li>
+              <li>Uso más eficiente de la fuerza, gracias a la postura y al apoyo de las piernas.</li>
+              <li>Posibilidad de trabajar de forma más sostenible en el tiempo.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Guía de Manejo Seguro de Personas Mayores. Todos los derechos reservados.</div>
+        <div class="footer-links">
+          <span>Material de uso formativo.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
